@@ -64,7 +64,7 @@ def main():
     if datetime.now(KST) > END:
         print("감시 기간 종료")
         return
-    req = urllib.request.Request(URL, headers={"User-Agent": "Mozilla/5.0"})
+    req = urllib.request.Request(URL, headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36", "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8", "Accept-Language": "ko-KR,ko;q=0.9"})
     html = urllib.request.urlopen(req, timeout=30).read().decode("utf-8", "replace")
     counts = open_counts(html)
     print(counts)
