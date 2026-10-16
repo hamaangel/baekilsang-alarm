@@ -1,0 +1,14 @@
+   name: 11월 백일돌상 빈자리 감시
+   on:
+     schedule:
+       - cron: "*/5 * * * *"   # 5분마다 (GitHub 사정으로 몇 분 늦을 수 있음)
+     workflow_dispatch:         # 수동 실행 버튼
+   jobs:
+     check:
+       runs-on: ubuntu-latest
+       steps:
+         - uses: actions/checkout@v4
+         - run: python check_slots.py
+           env:
+             TG_TOKEN: ${{ secrets.TG_TOKEN }}
+             TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}
